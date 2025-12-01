@@ -1,0 +1,554 @@
+
+
+CHROMIUM 
+7 Nov 2025 
+
+
+# output meta name with 2s JavaScript render time 
+
+$ /Applications/Chromium.app/Contents/MacOS/Chromium --headless --dump-dom --virtual-time-budget=2000 https://ai.deliverhealth.com/ai-coding | grep -o 'meta name="description" content="[^"]*"' 
+
+
+
+
+. . . .
+
+
+MYSQL FROM COMMAND LINE
+28 Oct 2025
+
+using MAMP Pro mySQL
+
+$ /Applications/MAMP/Library/bin/mysql80/bin/mysql -u root -p --default-character-set=utf8mb4 permatronrefactordb < ~/permatron-migrate-20251031161820.sql
+
+
+. . . . 
+
+
+FORCE PUSH TO REMOTE 
+3 Oct 2025
+
+ref: https://git-scm.com/docs/git-push
+
+# git push --force [REMOTE] [LOCAL BRANCH]:[REMOTE BRANCH]
+$ git push --force github main:main
+
+
+. . . . . 
+
+DELETE TWENTY TWENTY THEMES
+2 Oct 2025
+
+$ find . -type d -name "twenty*" -exec rm -rf {} \;
+
+
+. . . . . 
+
+
+RECURSIVE FILE PERMISSIONS
+
+
+ref: https://askubuntu.com/a/430685
+
+# change directories to 755 - rwxr-xr-x
+# change files to 644       - rw-r--r--
+$ find . -type d -exec chmod 755 {} \;
+$ find . -type f -exec chmod 644 {} \;
+
+
+ref: https://askubuntu.com/a/430685 
+
+# confirm XXX 
+$ stat -f "%A -  %N" *
+
+
+. . . . . 
+
+
+SPLIT PDF (CPDF)
+26 Sep 2025
+
+ref: https://commandmasters.com/commands/cpdf-common/
+
+$ cpdf -split 250925-all.pdf -o 38-golden-%.pdf -chunk 1
+
+
+
+. . . . . 
+
+
+DISK USE 
+Sep 2025
+
+Get subdirectories and sort by size 
+ref: https://unix.stackexchange.com/a/4682
+
+$ du -chs */ | sort -h
+
+
+ref: https://www.geeksforgeeks.org/linux-unix/du-command-linux-examples/ 
+
+-c - total size 
+-h - human readable 
+-s - summarize size of directory or file, without displaying individual usage details for subdirectories/
+
+
+rsync -av /Users/erica/dex/adacheng-dex/* /Volumes/QUAFF/250908-adacheng-dex
+
+
+rm -rf /Users/erica/dex/adacheng-dex/
+rm -rf /Users/erica/dex/worsham-dex/
+
+
+. . . . . 
+
+SWITCH BETWEEN SSH KEYS
+26 Aug 2025 
+
+ref: https://stackoverflow.com/a/69992322 
+
+Kept getting: 
+
+> fatal: Could not read from remote repository.
+> Please make sure you have the correct access rights and the repository exists.
+
+
+Confirm Git user 
+
+$ ssh -T git@github.com
+
+
+Resolved with: 
+
+$ eval `ssh-agent -s`
+
+
+# ericadreisbachdeveloper 
+# passphrase: ij
+
+$ ssh-add ~/.ssh/id_ed25519
+
+
+# erica-peppergroup
+# passphrase: pg
+
+$ ssh-add ~/.ssh/id_rsa
+
+
+
+. . . . 
+
+
+OUTPUT PUBLIC KEY TO CLIPBOARD
+8 Apr 2025 
+
+ref: https://wpengine.com/support/git/#Option_A_Generate_Key_Pair_in_Terminal
+
+# erica@peppergroup.com - WP Engine 
+$ cat ~/wpegitkey.pub | pbcopy
+
+# erica@peppergroup.com - GitHub - Liquid Web
+$ cat ~/id_rsa.pub | pbcopy
+
+# erica@ericadreisbach.com - GitHub 
+$ cat ~/id_ed25519.pub | pbcopy
+
+
+. . . . 
+
+FIND + RENAME 
+4 Apr 2025
+
+ref: https://stackoverflow.com/a/2709619
+
+
+Replace file space with hyphen 
+
+$ find . -name "* *" -type f | rename 's/ /_/g'
+
+
+. . . . 
+
+
+BATCH PDF CREATION - RASTER
+1 Feb 2025
+
+ref: https://askubuntu.com/a/557975
+
+
+$ magick "*.{png,jpeg}" -quality 100 outfile.pdf
+
+$ magick "*.{ext1,ext2,ext3,...}" -quality 100 outfile.pdf
+
+$ magick "*.{pdf,png,jpg}" -quality 100 bernies-book-drive-toolkit.pdf
+
+
+. . . . 
+
+
+ZIP FROM LINUX
+28 Jan 2025
+
+ref: https://www.cyberciti.biz/howto/question/general/compress-file-unix-linux-cheat-sheet.php 
+
+$ zip -r {directory.zip} {directory-to-compress}
+
+$ zip -r zz-enfold-v7.0.zip enfold
+
+. . . . 
+
+
+GIT BRANCH DEFAULT NAME
+17 Jan 2025
+
+$ git config --global init.defaultBranch main
+
+
+. . . . 
+
+
+NS LOOKUP
+2 Jan 2025 
+
+$ ns lookup 
+
+See also: https://www.whatsmydns.net/
+
+
+. . . . 
+
+
+TEXT IN PAGE
+3 Dec 2024 
+
+#:~:text=
+
+cf: https://wordpressforgood.com/wordfence-is-not-the-best-wordpress-security-plugin/#tab-con-3:~:text=Shortcomings%20of%20Wordfence%20and%20other%20security%20plugins
+
+
+. . . . 
+
+
+ICO
+3 Dec 2024
+
+Use iMagick 
+
+$ magick favicons/favicon.svg -compress none -define icon:auto-resize=48 ../../../favicon.ico
+  
+
+. . . . .
+
+
+HTTP HEADERS - cURL 
+8 Nov 2024 
+
+ref: https://stackoverflow.com/questions/3252851/how-to-display-request-headers-with-command-line-curl 
+
+ref: https://reqbin.com/req/c-skhwmiil/curl-flags-example 
+
+
+-I flag just means the same thing as -head 
+
+
+$ curl --head https://nypost.com/
+$ curl -I https://nypost.com/
+$ curl -I https://www.robertshaw.com
+
+curl -I https://acelpahealth.com/
+
+# x-hacker: If you're reading this, you should visit wpvip.com/careers and apply to join the fun, mention this header.
+
+
+. . . . . 
+
+
+TERMINUS
+31 Oct 2024 
+
+# You are not logged in. Run `auth:login` to authenticate or `help auth:login` for more info.  
+
+
+Needed to run: 
+
+$ terminus auth:login --email=erica@peppergroup.com
+
+
+. . . . . 
+
+
+GREP WITH FILE EXTENSION
+Oct 2024 
+
+$ grep -r -l '40k' --include \*.txt
+
+
+. . . . . 
+
+
+PATH
+23 Sep 2024
+
+
+$ echo $PATH
+
+Edit $PATH in ~/.zshrc a la: 
+
+export PATH="$PATH:/opt/homebrew/opt/php@8.2/bin:/Users/ericadreisbach/.composer/vendor/bin"
+
+
+
+. . . . . 
+
+
+
+LOCK COMMENTS 
+22 Aug 2024 
+
+ref: https://www.basedash.com/blog/mastering-mysql-how-to-lock-tables 
+
+LOCK TABLE wp_comments WRITE;
+LOCK TABLE wp_commentmeta WRITE;
+
+
+
+. . . . .
+
+
+BATCH CONVERSION 
+20 May 2024
+
+ref: https://askubuntu.com/a/35994 
+
+
+$ find . -iname '*.jpg' -exec mogrify -format webp -quality 80 {} +
+
+$ for f in $(find . -iname "*.webp"); do 
+    mv "$f" "${f%.webp}.jpg.webp"
+done
+
+
+$ find . -iname '*.jpeg' -exec mogrify -format webp -quality 80 {} +
+
+$ for f in $(find . -iname "*.webp" -and -not -iname "*.jpg.webp"); do
+    mv "$f" "${f%.webp}.jpeg.webp"
+done
+
+
+$ find . -iname '*.png' -exec mogrify -format webp -quality 80 {} +
+
+$ for f in $(find . -iname "*.webp" -and -not -iname "*.jpg.webp" -and -not -iname "*.jpeg.webp"); do
+    mv "$f" "${f%.webp}.png.webp" 
+done
+
+
+
+. . . . 
+
+SYMLINK
+14 May 2024
+
+ref: https://www.linode.com/docs/guides/linux-symlinks/ 
+
+$ ln -s </target-directory/target-file> </symlink-directory/example-symlink>
+
+
+WORKED 
+
+... only need to do this once ... 
+
+$ cd ~/Sites/localhost
+$ mkdir files && mkdir files/webp-express
+
+
+... do this once each time ? ... 
+
+$ cd carowpackaging
+$ cd wp-content 
+$ ln -s ./uploads/webp-express ./webp-express 
+
+$ cd ../
+$ git add .
+$ git commit -m'Added WebP Express symlink'
+$ git push 
+
+verify in S/FTP
+
+
+
+Settings in Dev (remote) WebP Express: 
+
+General
+
+o Scope - Uploads only 
+o Destination folder - Mingled 
+o Destination structure - Image roots 
+
+
+.htaccess 
+
+o Uncheck all 
+
+
+Conversion 
+
+o Convert on upload
+
+o run Bulk convert 
+
+
+Alter HTML
+
+o Alter HTML
+
+o Replace <img> with <picture>
+
+o Use content filtering hooks 
+
+
+. . . . 
+
+
+
+CURL
+29 APR 2024 
+
+ref: https://gist.github.com/eneko/dc2d8edd9a4b25c5b0725dd123f98b10 
+
+
+Show HTTP headers 
+
+$ curl -I ericadreisbach.com 
+
+
+. . . . 
+
+
+CONCATENATE PDFS
+22 Apr 2024
+
+ref: https://community.coherentpdf.com/
+ref: https://github.com/thom4parisot/homebrew-brew/tree/master
+ 
+$ brew tap oncletom/cpdf
+$ brew install cpdf
+
+$ cpdf input-1.pdf input-2.pdf input-3.pdf -o output.pdf
+
+
+# use magick to turn images into PDFs 
+# use cpdf to create a master PDF 
+
+$ for img in *.jpg *.png; do magick "$img" -quality 100 -compress lossless "${img%.*}_temp.pdf"; done && \
+cpdf *.pdf *_temp.pdf -o bernies-book-drive-toolkit.pdf && \
+rm *_temp.pdf 
+
+
+
+
+. . . . 
+
+
+FIND 
+11 Mar 2024
+
+ref: https://www.linode.com/docs/guides/find-files-in-linux-using-the-command-line/ 
+
+$ find . -name "*soRRy*"   
+
+
+. . . .
+
+
+RSYNC
+20 Feb 2024
+
+ref: https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories 
+
+rsync options source destination 
+
+
+# r - recursive
+$ rsync -av wp-content/uploads ~/Sites/localhost/wp-content
+
+
+# a - recursive, symbolic links preserved, permissions preserved, &c. 
+# n - dry run 
+# v - verbose 
+
+
+
+. . . . 
+
+
+WHAT PHP?
+20 Feb 2024
+
+ref: https://stackoverflow.com/a/66795404
+
+$ php -r "phpinfo();" | grep php.ini
+
+
+Where is PHP? 
+
+$ which php
+
+
+
+Change PHP version in MAMP under:  
+
+Hosts > localhost > PHP version 
+
+
+. . . . 
+
+
+RESTART TERMINAL
+20 Feb 2024
+
+ref: https://stackoverflow.com/a/57265823
+
+$ exec zsh -l
+
+
+. . . .
+
+DIFF 
+6 Nov 2023 
+
+
+$ diff ./-KENSING/231030-core-updates/block.json Sites/localhost/kensing/wp-includes/blocks/freeform/block.json
+
+ref: https://www.geeksforgeeks.org/diff-command-linux-examples/ 
+
+< means the first file 
+
+> means the second file 
+
+3d2 
+< Telangana 
+
+means: Delete the 3rd line of the first file ("Telangana") so that both files sync up at line 2
+
+
+. . . . 
+
+
+IMAGICK
+6 Nov 2023 
+
+https://imagemagick.org/ 
+https://legacy.imagemagick.org/script/convert.php 
+
+
+ref: https://www.smashingmagazine.com/2015/06/efficient-image-resizing-with-imagemagick/
+
+
+$ magick 231106-mug.jpg -quality 90 -define webp:lossless=false 231106-mug.webp
+
+$ magick IMG_2020.HEIC -quality 80 -define jpg 240408-eclipse.jpg
+
+
+
+. . . . . 
+

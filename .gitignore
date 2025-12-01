@@ -1,0 +1,14 @@
+# as of 30 Jan 2025 - erica dreisbach - erica@ericadreisbach.com
+
+
+#
+# IGNORE EVERYTHING in root ...
+# 
+/*
+
+
+#
+# ... except DO track ...
+#
+!.gitignore
+!DEV-NOTES.txt
