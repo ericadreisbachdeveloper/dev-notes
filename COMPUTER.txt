@@ -1,0 +1,475 @@
+COMPUTER UPDATES
+
+
+CHROMIUM
+
+7 Nov 2025
+
+Post-JavaScript rendering 
+
+$ brew install --cask chromium 
+
+
+. . . . 
+
+
+LYNX
+
+7 Nov 2025
+
+ref: https://stackoverflow.com/a/34658642 
+
+Text-based web browser, very similar to curl | less 
+
+$ curl https://ai.deliverhealth.com/blog | lynx -stdin -dump
+
+
+. . . . 
+
+
+GHOSTSCRIPT
+
+22 Sep 2025
+
+https://formulae.brew.sh/formula/ghostscript 
+
+
+# web quality 
+$ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=dutch-150-2971-ranco-commerical-refrigeration-opportunities.pdf zz-lg-dutch-150-2971-ranco-commerical-refrigeration-opportunities.pdf
+
+
+
+. . . . 
+
+
+WP SCAN
+
+6 Apr 2025
+
+ref: https://github.com/wpscanteam/homebrew-tap 
+ref: https://www.kali.org/tools/wpscan/ 
+
+
+Use: 
+
+$ wpscan --url https://acelpahealth.com --enumerate p
+
+
+# ref: https://stackoverflow.com/a/76941340
+
+$ brew install rbenv ruby-build
+$ rbenv init
+$ rbenv install 3.4.0
+$ rbenv global 3.4.0
+$ eval "$(rbenv init - bash)"
+
+
+x Added Ruby 3.4.0 to PATH ???
+x $ export PATH="$PATH:/Users/ericadreisbach//opt/homebrew/lib/ruby/gems/3.4.0/bin"
+x $ sudo gem install bundler:2.6.7
+x # bundler requires Ruby >= 3.1.0
+
+
+
+. . . . 
+
+ZIP
+
+28 Jan 2025
+
+ref: https://formulae.brew.sh/formula/zip
+
+
+
+. . . . 
+
+LIBREOFFICE 
+
+20 Jan 2025
+
+ref: https://formulae.brew.sh/cask/libreoffice 
+
+. . . . 
+
+
+ID3V2
+
+10 Jan 2025
+
+ref: https://formulae.brew.sh/formula/id3v2 
+ref: https://discussions.apple.com/thread/253998010?sortBy=rank 
+
+
+$ brew install id3v2
+
+$ cd Library/Group\ Containers/243LU875E5.groups.com.apple.podcasts/Library/Cache
+
+# list available flags 
+$ id3v2 -h 
+
+$ id3v2 -t '240306 - Emma Stone + Julio Torres' -g 'Podcast' -a 'A24' -A 'The A24 Podcast' F67
+
+$ id3v2 -t '250205 - Are we ready for kids?' -g 'Podcast' -a 'Victoria Garrick Brown' -A 'Real Pod' 3BF
+
+$ id3v2 -t '241107 - Trixie Mattel Returns' -g 'Podcast' -a 'Caleb Hearon' -A 'So True' 59C
+
+
+
+. . . . . 
+
+
+
+VS Code in PATH
+
+28 Oct 2024 
+
+ref: https://www.geeksforgeeks.org/how-to-open-vs-code-using-terminal/
+
+So as to use $ code to open files in VS Code 
+
+
+> Press Ctrl + Shift + P to open the Command Palette.
+> Type “Shell” and select “Shell Command: Install ‘code’ command in PATH.” and hit Enter
+
+
+. . . . . 
+
+
+VS Code Updates
+
+23 Sep 2024 
+
+In VS Code added 
+- EditorConfig for VS Code
+x phpcs (deprecated ??) 
+- ESLint (already installed) 
+
+Added instead https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+
+$ composer global require friendsofphp/php-cs-fixer 
+
+
+
+... which is the same as ... 
+
+https://cs.symfony.com/doc/ruleSets/PhpCsFixer.html 
+
+
+
+Then got paranoid and ran 
+
+$ brew install php-cs-fixer
+
+https://cs.symfony.com/doc/installation.html 
+
+
+And added ?? 
+
+https://github.com/tareq1988/wp-php-cs-fixer 
+
+
+
+. . . . .
+
+WORDPRESS DEVELOPMENT LINTING FOR VS CODE 
+
+23 Sep 2024 
+
+ref: https://github.com/wearebraid/vscode-wordpress 
+
+
+x PHP_CodeSniffer
+
+$ composer global require "squizlabs/php_codesniffer=*" 
+
+^ not sure where to set --dev flag, but did so with help of Terminal prompt 
+
+
+WordPress Coding Standards 
+
+$ composer global require "wp-coding-standards/wpcs"
+
+^ not sure where to set --dev flag, but did so with help of Terminal prompt 
+
+
+Ran the recommended helper ... 
+
+$ composer global require dealerdirect/phpcodesniffer-composer-installer 
+
+
+
+... updated .zshrc to include ... 
+
+export PATH="$PATH:~/.composer/vendor/bin"
+
+
+... but needed to use ABSOLUTE value in $PATH, not ~/.composer 
+
+export PATH="$PATH:/Users/ericadreisbach/.composer/vendor/bin"
+
+ref: https://github.com/squizlabs/PHP_CodeSniffer/issues/2071#issuecomment-443457703 
+
+
+
+Other info: https://stackoverflow.com/a/11787140 
+
+>> PEAR has a config setting which tells it where that PHP executable 
+>> is installed. You can see this value by running pear config-show 
+>> and looking for the value of PHP CLI/CGI binary (php_bin). You need 
+<< to make sure this value is actually the location of PHP on your 
+>> system or else all installs of scripts (like PHPUnit) will have a 
+>> similar problem.
+
+>> The best way to check this value is to run which php and set that 
+>> value for the PEAR config variable. Then reinstall PHP_CodeSniffer 
+>> so the replacement is done again.
+
+
+and here: https://github.com/squizlabs/PHP_CodeSniffer/issues/2071 
+
+>> it is possible that your PEAR bin_dir wasn't in $PATH either. You can 
+>> see that dir by running 
+$ pear config-get bin_dir
+
+/opt/homebrew/opt/php@8.2/bin
+
+$ which php
+$ php -v 
+$ which composer
+$ composer --version
+$ pear list -a
+
+
+
+
+. . . . . 
+
+COMPOSER 
+
+23 Sep 2024 
+
+ref: https://getcomposer.org/download/
+
+
+Added Composer (PHP application package manager) 
+
+Moved to bin
+
+$ mv composer.phar /usr/local/bin/composer
+
+
+
+. . . . . 
+
+RENAME
+
+3 Sep 2024 
+
+ref: https://formulae.brew.sh/formula/rename
+
+
+Added Rename binary 
+
+
+Rename to same directory 
+ref: https://stackoverflow.com/a/8167105
+
+$ rename -f 'y/A-Z/a-z/' *
+
+
+. . . . . 
+
+MAMP TRICK 
+
+11 Apr 2024
+
+
+ref: https://stackoverflow.com/questions/16943544/how-to-run-the-localhost-in-mamp-without-giving-any-port-number 
+
+
+Trouble with MAMP crashing after opening a CSS file with [default] MAMP 
+
+Installed latest version and localhost was on port :8888
+
+In MAMP under Ports & User confirmed "Set server ports to 80, 81, 443, 7443, 3306, and 11211" 
+
+localhost/ re-instated :)
+
+
+. . . . . 
+
+PDF EDITING
+
+29 Mar 2024
+
+
+ref: https://formulae.brew.sh/formula/exiftool 
+
+ref: https://exiftool.org/ 
+
+
+# saves original 
+$ exiftool [FILE PATH] -title="This is the new title" 
+
+# shows existing metadata 
+$ exiftool [FILE PATH]
+
+
+
+. . . . . 
+
+
+FFMPEG
+
+21 Feb 2024 
+
+
+ref: https://unix.stackexchange.com/a/38380 
+
+
+# https://unix.stackexchange.com/a/38380
+
+$ ffmpeg -i input.mp4 -vcodec libx264 -crf 20 output.mp4
+
+
+
+. . . . 
+
+
+PHP.INI
+
+20 Feb 2024
+
+
+ref: https://stackoverflow.com/a/66795404 
+
+
+Where is php.ini ?
+
+$ php -r "phpinfo();" | grep php.ini 
+
+Configuration File (php.ini) Path => /opt/homebrew/etc/php/8.2
+
+Loaded Configuration File => /opt/homebrew/etc/php/8.2/php.ini
+
+
+
+Use MAMP to change PHP versions in localhost 
+
+
+
+. . . . 
+
+
+
+POST_MAX-SIZE 
+
+20 Feb 2024
+
+
+ref: https://stackoverflow.com/a/24665872
+ref: http://localhost/phpMyAdmin5/doc/html/faq.html#faq1-16
+
+
+
+>> Please note that post_max_size needs to be larger than upload_max_filesize.
+
+
+
+/Applications/MAMP/bin/php/php8.2.0/conf/php.ini 
+
+post_max_size=300M
+
+upload_max_filesize=256M
+
+memory_limit=900M
+
+
+. . . . 
+
+
+IMAGICK ON MAMP
+
+20 Feb 2024
+
+
+ref: https://stackoverflow.com/questions/921780/how-to-install-imagemagick-on-mamp 
+
+
+Uncommented ;extension=imagick.so 
+
+/Applications/MAMP/bin/php/php8.2.0/conf/php.ini 
+
+
+. . . . 
+
+
+LOCAL WORDPRESS CLI 
+
+24 Oct 2023 
+
+
+ref: https://make.wordpress.org/cli/handbook/guides/installing/
+
+run 
+
+$ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+
+Updated bash profile for WordPress local CLI 
+
+>> You need to make the file executable and move it to somewhere in your PATH. For example:
+
+$ chmod +x wp-cli.phar
+$ sudo mv wp-cli.phar /usr/local/bin/wp
+
+
+. . . . 
+
+
+TERMINUS 
+
+23 Oct 2023 
+
+
+ref: https://www.reddit.com/r/sourcetree/comments/rplum6/comment/hrrr7rp/ 
+
+
+Updated bash profile for Terminus (Pantheon server) 
+
+$ ln -s /Applications/MAMP/bin/php/php8.2.0/bin/php /usr/local/bin/php 
+
+
+ref: https://docs.pantheon.io/terminus/install#homebrew-installation
+
+$ brew install pantheon-systems/external/terminus
+
+Create a machine token on Pantheon 
+- Personal Settings https://dashboard.pantheon.io/personal-settings/profile 
+- Machine tokens 
+
+$ terminus auth:login --email=<email@example.com> --machine-token=<machine_token> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+. . . . . . . 
