@@ -1,13 +1,64 @@
 
 
+
+CURL w/ AUTHENTICATION
+29 Nov 2025 
+
+
+$ curl -i -u Cash https://walkwagrepeat.fun
+
+
+
+. . . . . 
+
+
+NFS AUTHENTICAION 
+29 Nov 2025
+
+ref: https://members.nearlyfreespeech.net/forums/viewtopic.php?t=12152&highlight=htaccess 
+
+Using .htaccess 
+
+    AuthType Basic
+    AuthName "Restricted"
+    AuthBasicProvider file
+    AuthUserFile /someroot/protected/.htpasswd
+    Require valid-user
+
+... the critical step was getting someroot from the NFS dashboard for the site, i.e. for walkwagrepeat.fun: 
+
+AuthUserFile /ginger/walkwagrepeat/protected/.htpasswd
+
+
+. . . . . 
+
+
+HTPASSWD
+29 Nov 2025
+
+htpasswd -c /path/to/.htpasswd username
+
+
+. . . .  .
+
+
+SECURE COPY - SCP
+28 Nov 2025 
+
+
+$ scp ./.htaccess walkwagrepeat:/home/public/.htaccess
+
+
+. . . . . 
+
+
+
 CHROMIUM 
 7 Nov 2025 
-
 
 # output meta name with 2s JavaScript render time 
 
 $ /Applications/Chromium.app/Contents/MacOS/Chromium --headless --dump-dom --virtual-time-budget=2000 https://ai.deliverhealth.com/ai-coding | grep -o 'meta name="description" content="[^"]*"' 
-
 
 
 
@@ -17,7 +68,9 @@ $ /Applications/Chromium.app/Contents/MacOS/Chromium --headless --dump-dom --vir
 MYSQL FROM COMMAND LINE
 28 Oct 2025
 
-using MAMP Pro mySQL
+using MAMP Pro mySQL to migrate database 
+
+example here: replace phpMyAdmin db with an exported sql file 
 
 $ /Applications/MAMP/Library/bin/mysql80/bin/mysql -u root -p --default-character-set=utf8mb4 permatronrefactordb < ~/permatron-migrate-20251031161820.sql
 
@@ -35,6 +88,7 @@ $ git push --force github main:main
 
 
 . . . . . 
+
 
 DELETE TWENTY TWENTY THEMES
 2 Oct 2025
@@ -59,7 +113,7 @@ $ find . -type f -exec chmod 644 {} \;
 ref: https://askubuntu.com/a/430685 
 
 # confirm XXX 
-$ stat -f "%A -  %N" *
+$ stat -f "%A - %N" *
 
 
 . . . . . 
