@@ -1,12 +1,52 @@
 
 
+NSLOOKUP
+4 Dec 2025
+
+ref: https://www.computerhope.com/unix/unslooku.htm
+
+$ nslookup -type=ns ericadreisbach.com
+
+
+. . . . . 
+
+
+DIG
+2 Dec 2025 
+
+ref: https://www.cyberciti.biz/faq/linux-unix-dig-command-examples-usage-syntax/ 
+
+
+# Find the IP address (A) of a Hostname
+
+$ dig +short ericadreisbach.com A
+
+
+# Find the MX (mail exchanges) of a domain/host name for incoming mail 
+
+$ dig +short ericadreisbach.com MX
+
+
+# Find the NS (name servers) of a domain name
+
+$ dig +short ericadreisbach.com NS
+
+
+# Find the TXT (text annotations) of a domain name
+
+$ dig +short ericadreisbach.com TXT
+
+
+. . . . . 
+
 
 CURL w/ AUTHENTICATION
 29 Nov 2025 
 
 
-$ curl -i -u Cash https://walkwagrepeat.fun
+# generates a password prompt 
 
+$ curl -i -u Cash https://walkwagrepeat.fun
 
 
 . . . . . 
@@ -46,7 +86,17 @@ SECURE COPY - SCP
 28 Nov 2025 
 
 
+Note that shortcut represents realpath, NOT for home directory
+
+# single file 
+
 $ scp ./.htaccess walkwagrepeat:/home/public/.htaccess
+
+
+# -r flag for directories 
+# DON'T specify destination directory in this case 
+
+$ scp -r ./wp-content/plugins/wp-migrate-db-pro schebler:/home/a98043b1/public_html/wp-content/plugins/
 
 
 . . . . . 
@@ -93,15 +143,7 @@ $ git push --force github main:main
 DELETE TWENTY TWENTY THEMES
 2 Oct 2025
 
-$ find . -type d -name "twenty*" -exec rm -rf {} +
-
->> With +, multiple results are passed to a single command 
->> invocation (more efficient), whereas \; runs the command 
->> separately for each result.
-
-
-
-x $ find . -type d -name "twenty*" -exec rm -rf {} \;
+$ find . -type d -name "twenty*" -exec rm -rf {} \;
 
 
 . . . . . 
