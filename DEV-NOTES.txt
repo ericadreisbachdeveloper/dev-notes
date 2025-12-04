@@ -76,7 +76,7 @@ AuthUserFile /ginger/walkwagrepeat/protected/.htpasswd
 HTPASSWD
 29 Nov 2025
 
-htpasswd -c /path/to/.htpasswd username
+$ htpasswd -c /path/to/.htpasswd username
 
 
 . . . .  .
@@ -86,7 +86,8 @@ SECURE COPY - SCP
 28 Nov 2025 
 
 
-Note that shortcut represents realpath, NOT for home directory
+# Note that shortcut represents realpath, NOT home directory
+# Can use scp to push up or pull down 
 
 # single file 
 
@@ -222,9 +223,34 @@ Confirm Git user
 $ ssh -T git@github.com
 
 
+> Disable pseudo-terminal allocation
+> Normally SSH allocates a terminal (TTY) so you can run interactive commands 
+> -T says "I don't need an interactive shell, just run the command and give me output"
+
+
 Resolved with: 
 
 $ eval `ssh-agent -s`
+
+
+
+> The backtick syntax is old-school. Modern equivalent: 
+
+$ eval $(ssh-agent -s)
+
+
+> Starts the SSH agent (a background program that holds your SSH keys in memory)
+> The -s flag tells it to output shell commands for the Bourne shell family (bash, zsh, 
+> etc.)
+> It outputs something like:
+
+> SSH_AUTH_SOCK=/tmp/ssh-XXX/agent.12345; export SSH_AUTH_SOCK;
+> SSH_AGENT_PID=12346; export SSH_AGENT_PID;
+
+> Your shell now knows how to talk to the SSH agent, so when you run ssh-add to add keys, 
+> they're stored in the agent and you don't have to re-enter your passphrase for each 
+> connection.
+
 
 
 # ericadreisbachdeveloper 
