@@ -93,7 +93,15 @@ $ git push --force github main:main
 DELETE TWENTY TWENTY THEMES
 2 Oct 2025
 
-$ find . -type d -name "twenty*" -exec rm -rf {} \;
+$ find . -type d -name "twenty*" -exec rm -rf {} +
+
+>> With +, multiple results are passed to a single command 
+>> invocation (more efficient), whereas \; runs the command 
+>> separately for each result.
+
+
+
+x $ find . -type d -name "twenty*" -exec rm -rf {} \;
 
 
 . . . . . 
