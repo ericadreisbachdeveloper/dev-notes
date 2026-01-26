@@ -1,5 +1,40 @@
 
 
+
+
+APACHE
+24 Jan 2026
+
+ref: https://www.sitelint.com/blog/macos-find-start-stop-and-restart-the-apache-web-server
+
+
+$ httpd -v  
+Apache/2.4.58 (Unix)
+
+$ which -a httpd
+/usr/sbin/httpd
+
+$ sudo /usr/sbin/apachectl start
+
+$ sudo /usr/sbin/apachectl stop
+
+. . . . .
+
+
+
+
+LIGHTHOUSE CLI
+18 Dec 2025
+
+$ lighthouse https://www.robertshaw.com/parts-sitemap.xml \
+  --output=json \
+  --output-path=./report.json \
+  --only-categories=performance \
+  --chrome-flags="--headless"
+
+. . . . . 
+
+
 NSLOOKUP
 4 Dec 2025
 

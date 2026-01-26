@@ -1,6 +1,23 @@
 COMPUTER UPDATES
 
 
+
+LIGHTHOUSE CLI 
+
+18 Dec 2025 
+
+$ npm install -g lighthouse
+
+$ lighthouse https://example.com \
+  --output=json \
+  --output-path=./report.json \
+  --only-categories=performance \
+  --chrome-flags="--headless"
+
+
+. . . . . 
+
+
 CHROMIUM
 
 7 Nov 2025
