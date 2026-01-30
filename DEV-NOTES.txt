@@ -1,6 +1,21 @@
 
 
 
+MANUALLY SET A COOKIE 
+30 Jan 2026
+
+In browser console: 
+
+cookie = map_access_granted 
+value = 1
+max-age = 30 days 
+
+document.cookie = "map_access_granted=1; max-age=" + (30*24*60*60) + "; path=/";
+
+
+
+
+. . . . . 
 
 APACHE
 24 Jan 2026
@@ -18,9 +33,8 @@ $ sudo /usr/sbin/apachectl start
 
 $ sudo /usr/sbin/apachectl stop
 
+
 . . . . .
-
-
 
 
 LIGHTHOUSE CLI
@@ -159,6 +173,16 @@ using MAMP Pro mySQL to migrate database
 example here: replace phpMyAdmin db with an exported sql file 
 
 $ /Applications/MAMP/Library/bin/mysql80/bin/mysql -u root -p --default-character-set=utf8mb4 permatronrefactordb < ~/permatron-migrate-20251031161820.sql
+
+
+$ /Applications/MAMP/Library/bin/mysql80/bin/mysql -u pantheon -pa8zGGcdPD0zAHPKi73uQFQOZGkVIelDF -h dbserver.dev.6bca8971-d76a-4cf4-82f3-ed209d138943.drush.in -P 11004 pantheon
+
+$ /Applications/MAMP/Library/bin/mysql80/bin/mysql -u pantheon -phaYScQZ9d33GtMI8MmT90_sWiGciPbCb -h dbserver.test.6bca8971-d76a-4cf4-82f3-ed209d138943.drush.in -P 11315 pantheon
+
+
+$ /Applications/MAMP/Library/bin/mysql80/bin/mysql -u pantheon -paeNjfqN5OVDu26Fz1rn0ufg4ICD2VFiO -h dbserver.live.6bca8971-d76a-4cf4-82f3-ed209d138943.drush.in -P 11102 pantheon
+
+mysql> UPDATE wp_users SET user_pass = MD5('x%dvrqX^LJel#rfmh$^bKnE3') WHERE user_email = 'websites+subscriber@peppergroup.com';
 
 
 . . . . 
