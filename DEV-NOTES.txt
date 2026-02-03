@@ -1,5 +1,39 @@
 
 
+TESTING COMMENT ENDPOINT
+2 Feb 2026
+
+curl -I https://www.economicliberties.us/wp-comments-post.php
+
+# 405 
+
+
+# What this means:
+
+# The endpoint exists and is responding
+# It's saying "I only accept POST requests, not HEAD requests"
+# The curl -I command sends a HEAD request (headers only)
+
+
+$ curl -X POST https://www.economicliberties.us/wp-comments-post.php \
+  -d "comment=Secure your endpoints, love" \
+  -d "author=frohike" \
+  -d "email=thisisatest@test.com" \
+  -d "comment_post_ID=1" \
+  -v
+
+# HTTP 403 with "Comments are disabled" message
+
+OR 
+
+# HTTP 302 redirect to the post URL with #comment-xxxxx
+
+OR 
+
+# HTTP 200 with zero content length and no redirect - The comment endpoint is processing the POST request, but something is silently failing or blocking it without giving the typical WordPress response
+
+. . . . .
+
 
 MANUALLY SET A COOKIE 
 30 Jan 2026
@@ -11,8 +45,6 @@ value = 1
 max-age = 30 days 
 
 document.cookie = "map_access_granted=1; max-age=" + (30*24*60*60) + "; path=/";
-
-
 
 
 . . . . . 
@@ -45,6 +77,7 @@ $ lighthouse https://www.robertshaw.com/parts-sitemap.xml \
   --output-path=./report.json \
   --only-categories=performance \
   --chrome-flags="--headless"
+
 
 . . . . . 
 
@@ -125,8 +158,32 @@ AuthUserFile /ginger/walkwagrepeat/protected/.htpasswd
 HTPASSWD
 29 Nov 2025
 
+Create basic password authentication on a server 
+
 $ htpasswd -c /path/to/.htpasswd username
 
+
+# MD5 (Apache-specific, default on most systems)
+$ htpasswd -m /path/to/.htpasswd username
+
+# bcrypt (most secure, recommended)
+$ htpasswd -B /path/to/.htpasswd username
+
+# SHA-256 (newer)
+$ htpasswd -2 /path/to/.htpasswd username
+
+# SHA-512 (strongest, if supported)
+$ htpasswd -5 /path/to/.htpasswd username
+
+# crypt() (old, insecure, don't use)
+$ htpasswd -d /path/to/.htpasswd username
+
+# Plain text (NO encryption - never use in production!)
+$ htpasswd -p /path/to/.htpasswd username
+
+
+# Readable by webserver but not writable
+$ chmod 644 /path/to/.htpasswd
 
 . . . .  .
 
@@ -491,13 +548,13 @@ export PATH="$PATH:/opt/homebrew/opt/php@8.2/bin:/Users/ericadreisbach/.composer
 
 
 
-LOCK COMMENTS 
-22 Aug 2024 
+x LOCK COMMENTS 
+x 22 Aug 2024 
 
-ref: https://www.basedash.com/blog/mastering-mysql-how-to-lock-tables 
+x ref: https://www.basedash.com/blog/mastering-mysql-how-to-lock-tables 
 
-LOCK TABLE wp_comments WRITE;
-LOCK TABLE wp_commentmeta WRITE;
+x LOCK TABLE wp_comments WRITE;
+x LOCK TABLE wp_commentmeta WRITE;
 
 
 
