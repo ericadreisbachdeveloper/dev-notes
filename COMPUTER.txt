@@ -1,6 +1,18 @@
 COMPUTER UPDATES
 
 
+S3CMD
+
+2 Mar 2026
+
+ref: https://formulae.brew.sh/formula/s3cmd
+
+$ brew install s3cmd
+
+$ s3cmd sync --acl-public --force ~/Sites/paper/paper/assets/img/* s3://darkblackllc/
+
+. . . . . 
+
 
 LIGHTHOUSE CLI 
 
